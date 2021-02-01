@@ -1,0 +1,28 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-left: 25px;
+
+  position: sticky;
+  top: 0;
+
+  animation: fadeIn 0.5s;
+}
+
+.menu {
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

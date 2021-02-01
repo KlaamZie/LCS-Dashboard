@@ -1,0 +1,126 @@
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.toolbar_numberOfItems {
+  color: var(--main);
+}
+
+.toolbar_createButton {
+  text-decoration: none;
+  background-color: var(--main);
+  color: var(--white);
+  padding: 10px 15px;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  transition: all 0.3s;
+
+  > svg {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: var(--secondary);
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  width: 100%;
+
+  tr {
+    border-top: 1px solid var(--secondary-soft);
+    border-bottom: 1px solid var(--secondary-soft);
+  }
+
+  thead {
+    th {
+      padding: 10px 20px;
+      color: var(--secondary);
+      font-weight: bold;
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        color: var(--main);
+        font-weight: 400;
+        padding: 20px;
+
+        &:last-of-type {
+          text-align: right;
+
+          a > svg,
+          svg {
+            display: inline-block;
+            vertical-align: middle;
+
+            width: 20px;
+            height: 20px;
+
+            cursor: pointer;
+          }
+
+          > a {
+            color: var(--main);
+
+            &:hover {
+              color: var(--secondary-soft);
+            }
+          }
+
+          > svg {
+            margin-left: 15px;
+
+            &:not(:last-of-type):hover {
+              color: var(--secondary-soft);
+            }
+
+            &:last-of-type:hover {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.paginate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px;
+
+  color: var(--main);
+
+  button {
+    background-color: var(--transparent);
+    border: none;
+    color: var(--main);
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

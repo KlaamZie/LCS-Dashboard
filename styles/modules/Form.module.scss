@@ -1,0 +1,318 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 20%;
+  column-gap: 40px;
+  row-gap: 20px;
+}
+
+.container_fluid {
+  display: flex;
+  flex-direction: column;
+  grid-row-gap: 20px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.row {
+  border: none;
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+.row_image {
+  display: grid;
+  grid-template-columns: repeat(5, 160px);
+  grid-gap: 10px;
+}
+
+.row_multiple {
+  display: grid;
+  grid-template-columns: 1fr fit-content(100%);
+  grid-gap: 10px;
+  align-items: center;
+
+  > svg {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.row_details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) fit-content(100%);
+  grid-gap: 10px;
+  align-items: center;
+
+  > svg {
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+
+    transition: all 0.3s;
+
+    &:hover {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.row_declinations_values {
+  grid-column: 1 / span 2;
+
+  margin-left: 10px;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+
+  > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) fit-content(100%);
+    grid-gap: 10px;
+    align-items: center;
+  }
+}
+
+.row_submit {
+  grid-column: 1 / span 2;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.label {
+  font-size: 20px;
+  color: var(--main);
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.label_image {
+  grid-column: 1 / span 5;
+  margin-bottom: 0;
+}
+
+.label_sub {
+  font-size: 18px;
+  color: var(--secondary);
+  font-weight: normal;
+}
+
+.label_declinations_values {
+  grid-column: 1 / span 4;
+}
+
+.field {
+  width: 100%;
+  padding: 10px 5px;
+
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--secondary-soft);
+
+  box-sizing: border-box;
+  appearance: none;
+
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: var(--secondary);
+  }
+}
+
+.field_name {
+  font-size: 30px;
+}
+
+.field_image {
+  width: 160px;
+  height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--secondary-soft);
+
+  text-align: center;
+  cursor: pointer;
+
+  svg {
+    height: 50px;
+    width: 50px;
+  }
+
+  &:hover {
+    border-color: var(--secondary);
+    color: var(--secondary);
+  }
+}
+
+.field_multiple:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+.field_submit {
+  width: fit-content;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--white);
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--transparent);
+    color: var(--secondary);
+  }
+}
+
+.image_container {
+  position: relative;
+}
+
+.image {
+  height: 160px;
+  width: 160px;
+
+  object-fit: contain;
+
+  background-color: black;
+}
+
+.image_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > svg {
+    width: 30px;
+    height: 30px;
+
+    cursor: pointer;
+  }
+}
+
+.image_delete {
+  display: block;
+  color: red;
+  margin: 0 auto;
+
+  background-color: var(--transparent);
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.declination_add_value {
+  grid-column: 1 / span 4;
+  display: block;
+  color: var(--secondary-soft);
+  margin: 0 auto;
+
+  background-color: var(--transparent);
+  border: none;
+
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.list {
+  display: grid;
+  grid-gap: 5px;
+}
+
+.list_Item {
+  display: flex;
+  align-items: center;
+
+  > svg {
+    margin-right: 5px;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+  width: 100%;
+
+  tr {
+    border-top: 1px solid var(--secondary-soft);
+    border-bottom: 1px solid var(--secondary-soft);
+  }
+
+  thead {
+    th {
+      padding: 5px 10px;
+      color: var(--secondary);
+      font-weight: bold;
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        color: var(--main);
+        font-weight: 400;
+        padding: 10px;
+
+        &:last-of-type {
+          text-align: right;
+
+          svg {
+            display: inline-block;
+            vertical-align: middle;
+
+            width: 20px;
+            height: 20px;
+
+            cursor: pointer;
+          }
+
+          > svg {
+            &:not(:last-of-type):hover {
+              color: var(--secondary-soft);
+            }
+
+            &:last-of-type:hover {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+  }
+}

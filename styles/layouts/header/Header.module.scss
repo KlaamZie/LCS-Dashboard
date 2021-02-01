@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  color: var(--main);
+  font-weight: 400;
+  font-size: 40px;
+  > span {
+    font-weight: bold;
+
+    text-transform: capitalize;
+  }
+}
+
+.nav {
+  appearance: none;
+  text-decoration: none;
+
+  color: var(--main);
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}

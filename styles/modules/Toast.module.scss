@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  background-color: var(--main);
+  color: var(--white);
+  text-align: center;
+
+  padding: 10px 15px;
+
+  min-width: 20%;
+  max-width: 30%;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  animation: slideIn 0.3s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(200%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.button {
+  background-color: var(--transparent);
+  border: none;
+  color: var(--secondary-soft);
+  cursor: pointer;
+
+  transition: all 0.3s;
+  padding: 5px;
+  border-radius: 5px;
+
+  font-weight: bold;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
