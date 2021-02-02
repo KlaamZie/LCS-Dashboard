@@ -1,7 +1,6 @@
 import Layout from '@/components/layouts/default';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { getSession } from 'next-auth/client';
 
 import useForm from '@/hooks/useForm';
 import useToast from '@/hooks/useToast';
@@ -50,21 +49,4 @@ export default function CreateDetail() {
       </form>
     </Layout>
   );
-}
-
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: `/auth/signin?callbackUrl=${process.env.NEXTAUTH_URL}`,
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
 }

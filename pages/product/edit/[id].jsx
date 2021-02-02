@@ -1,6 +1,6 @@
 import Layout from '@/components/layouts/default';
 import PropTypes from 'prop-types';
-import { getSession } from 'next-auth/client';
+import auth0 from '@/lib/auth0';
 
 import axios from 'axios';
 
@@ -147,12 +147,12 @@ EditProduct.propTypes = {
 };
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
+  const session = await auth0.getSession(context.req);
 
   if (!session) {
     return {
       redirect: {
-        destination: `/auth/signin?callbackUrl=${process.env.NEXTAUTH_URL}`,
+        destination: '/api/login',
         permanent: false,
       },
     };

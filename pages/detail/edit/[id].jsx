@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { getSession } from 'next-auth/client';
 
 import Layout from '@/components/layouts/default';
 import PropTypes from 'prop-types';
@@ -108,17 +107,6 @@ EditDetail.propTypes = {
 };
 
 export async function getServerSideProps(context) {
-  const session = await getSession(context);
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: `/auth/signin?callbackUrl=${process.env.NEXTAUTH_URL}`,
-        permanent: false,
-      },
-    };
-  }
-
   const { id } = context.query;
   // Fetch data from external API
   const { data } = await axios.get(`http://localhost:4000/detail?id=${id}`);
