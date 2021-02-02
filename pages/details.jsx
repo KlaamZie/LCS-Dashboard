@@ -30,7 +30,7 @@ export default function Details() {
 
     mutate(`/api/details?page=${page}`, (data) => ({ ...data, details: newDetails }), false);
 
-    await axios.post('http://localhost:4000/detail', {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/detail`, {
       ...el, name: `${el.name} (copy)`,
     });
 
@@ -43,7 +43,7 @@ export default function Details() {
 
     mutate(`/api/products?page=${page}`, (data) => ({ ...data, details: newDetails }), false);
 
-    await axios.delete(`http://localhost:4000/detail?id=${id}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/detail?id=${id}`);
 
     trigger(`/api/details?page=${page}`);
   };

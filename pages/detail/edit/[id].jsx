@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import Layout from '@/components/layouts/default';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import auth0 from '@/lib/auth0';
 
 import useForm from '@/hooks/useForm';
 import useToast from '@/hooks/useToast';
@@ -107,9 +108,20 @@ EditDetail.propTypes = {
 };
 
 export async function getServerSideProps(context) {
+  const session = await auth0.getSession(context.req);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/api/login',
+        permanent: false,
+      },
+    };
+  }
+
   const { id } = context.query;
   // Fetch data from external API
-  const { data } = await axios.get(`http://localhost:4000/detail?id=${id}`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/detail?id=${id}`);
 
   // Pass data to the page via props
   return { props: { data: data.detail, id } };

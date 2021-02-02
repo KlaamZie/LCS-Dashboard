@@ -30,7 +30,7 @@ export default function Attributes() {
 
     mutate(`/api/attributes?page=${page}`, (data) => ({ ...data, attributes: newAttributes }), false);
 
-    await axios.post('http://localhost:4000/declination', {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/declination`, {
       ...el, name: `${el.name} (copy)`,
     });
 
@@ -43,7 +43,7 @@ export default function Attributes() {
 
     mutate(`/api/attributes?page=${page}`, (data) => ({ ...data, attributes: newAttributes }), false);
 
-    await axios.delete(`http://localhost:4000/declination?id=${id}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/declination?id=${id}`);
 
     trigger(`/api/attributes?page=${page}`);
   };

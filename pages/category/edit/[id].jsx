@@ -117,7 +117,7 @@ export async function getServerSideProps(context) {
 
   const { id } = context.query;
   // Fetch data from external API
-  const { data } = await axios.get(`http://localhost:4000/category?id=${id}`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/category?id=${id}`);
 
   // Pass data to the page via props
   return { props: { data: data.category, id } };

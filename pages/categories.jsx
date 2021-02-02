@@ -30,7 +30,7 @@ export default function Categories() {
 
     mutate(`/api/categories?page=${page}`, (data) => ({ ...data, categories: newCategories }), false);
 
-    await axios.post('http://localhost:4000/category', {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/category`, {
       ...el, name: `${el.name} (copy)`, parent: '', childs: [],
     });
 
@@ -43,7 +43,7 @@ export default function Categories() {
 
     mutate(`/api/categories?page=${page}`, (data) => ({ ...data, categories: newCategories }), false);
 
-    await axios.delete(`http://localhost:4000/category?id=${id}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/category?id=${id}`);
 
     trigger(`/api/categories?page=${page}`);
   };

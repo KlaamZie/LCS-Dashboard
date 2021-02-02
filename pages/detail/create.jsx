@@ -1,6 +1,7 @@
 import Layout from '@/components/layouts/default';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import auth0 from '@/lib/auth0';
 
 import useForm from '@/hooks/useForm';
 import useToast from '@/hooks/useToast';
@@ -49,4 +50,21 @@ export default function CreateDetail() {
       </form>
     </Layout>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await auth0.getSession(context.req);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/api/login',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 }

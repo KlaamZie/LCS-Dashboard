@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import auth0 from '@/lib/auth0';
 
 import Layout from '@/components/layouts/default';
 import PropTypes from 'prop-types';
@@ -106,10 +107,21 @@ EditAttribute.propTypes = {
   id: PropTypes.string.isRequired,
 };
 
-export async function getServerSideProps({ query }) {
-  const { id } = query;
+export async function getServerSideProps(context) {
+  const session = await auth0.getSession(context.req);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/api/login',
+        permanent: false,
+      },
+    };
+  }
+
+  const { id } = context.query;
   // Fetch data from external API
-  const { data } = await axios.get(`http://localhost:4000/declination?id=${id}`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/declination?id=${id}`);
 
   // Pass data to the page via props
   return { props: { data: data.declination, id } };

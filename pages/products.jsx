@@ -30,7 +30,7 @@ export default function Products() {
 
     mutate(`/api/products?page=${page}`, (data) => ({ ...data, products: newProducts }), false);
 
-    await axios.post('http://localhost:4000/product', {
+    await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/product`, {
       ...el, name: `${el.name} (copy)`, state: false,
     });
 
@@ -43,7 +43,7 @@ export default function Products() {
 
     mutate(`/api/products?page=${page}`, (data) => ({ ...data, products: newProducts }), false);
 
-    await axios.delete(`http://localhost:4000/product?id=${id}`);
+    await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/product?id=${id}`);
 
     trigger(`/api/products?page=${page}`);
   };
